@@ -2,11 +2,13 @@ using Content.Shared.Examine;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
+using Content.Shared.Item;
 using Content.Shared.Popups;
 using JetBrains.Annotations;
 using Robust.Shared.GameStates;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Stacks
 {
@@ -17,6 +19,8 @@ namespace Content.Shared.Stacks
         [Dependency] protected readonly SharedPopupSystem PopupSystem = default!;
         [Dependency] protected readonly SharedHandsSystem HandsSystem = default!;
         [Dependency] protected readonly SharedTransformSystem Xform = default!;
+        [Dependency] protected readonly SharedItemSystem ItemSystem = default!;
+        [Dependency] protected readonly IPrototypeManager PrototypeManager = default!;
         [Dependency] private readonly IGameTiming _gameTiming = default!;
 
         public override void Initialize()
@@ -153,6 +157,9 @@ namespace Content.Shared.Stacks
             }
 
             component.Count = amount;
+
+            SetStackItemSize(uid, component);
+
             Dirty(component);
 
             Appearance.SetData(uid, StackVisuals.Actual, component.Count);
@@ -183,6 +190,19 @@ namespace Content.Shared.Stacks
             return true;
         }
 
+        private void SetStackItemSize(EntityUid uid, SharedStackComponent stackComponent)
+        {
+            if (stackComponent.Unlimited)
+                return;
+
+            if (TryComp(uid, out ItemComponent? itemComponent))
+            {
+                var prototype = PrototypeManager.Index<StackPrototype>(stackComponent.StackTypeId);
+                var size = (int)MathF.Ceiling(stackComponent.Count * prototype.UnitSize);
+                ItemSystem.SetSize(uid, size, itemComponent);
+            }
+        }
+
         private void OnStackStarted(EntityUid uid, SharedStackComponent component, ComponentStartup args)
         {
             if (!TryComp(uid, out AppearanceComponent? appearance))
@@ -191,6 +211,8 @@ namespace Content.Shared.Stacks
             Appearance.SetData(uid, StackVisuals.Actual, component.Count, appearance);
             Appearance.SetData(uid, StackVisuals.MaxCount, component.MaxCount, appearance);
             Appearance.SetData(uid, StackVisuals.Hide, false, appearance);
+
+            SetStackItemSize(uid, component);
         }
 
         private void OnStackGetState(EntityUid uid, SharedStackComponent component, ref ComponentGetState args)

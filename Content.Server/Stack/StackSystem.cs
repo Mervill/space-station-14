@@ -4,7 +4,6 @@ using Content.Shared.Verbs;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Stack
 {
@@ -15,8 +14,7 @@ namespace Content.Server.Stack
     [UsedImplicitly]
     public sealed class StackSystem : SharedStackSystem
     {
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-
+        
         public static readonly int[] DefaultSplitAmounts = { 1, 5, 10, 20, 30, 50 };
 
         public override void Initialize()
@@ -47,7 +45,7 @@ namespace Content.Server.Stack
                 return null;
 
             // Get a prototype ID to spawn the new entity. Null is also valid, although it should rarely be picked...
-            var prototype = _prototypeManager.TryIndex<StackPrototype>(stack.StackTypeId, out var stackType)
+            var prototype = PrototypeManager.TryIndex<StackPrototype>(stack.StackTypeId, out var stackType)
                 ? stackType.Spawn
                 : Prototype(stack.Owner)?.ID;
 
@@ -112,7 +110,7 @@ namespace Content.Server.Stack
 
         public void SpawnMultiple(int amount, int maxCountPerStack, string prototype, EntityCoordinates spawnPosition)
         {
-            if (!_prototypeManager.TryIndex<StackPrototype>(prototype, out var stackType))
+            if (!PrototypeManager.TryIndex<StackPrototype>(prototype, out var stackType))
             {
                 Logger.Error("Failed to index stack prototype " + prototype);
                 return;

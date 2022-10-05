@@ -1,6 +1,7 @@
 ﻿using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Utility;
+using Content.Shared.FixedPoint;
 
 namespace Content.Shared.Stacks
 {
@@ -29,5 +30,11 @@ namespace Content.Shared.Stacks
         /// </summary>
         [DataField("spawn", required: true, customTypeSerializer:typeof(PrototypeIdSerializer<EntityPrototype>))]
         public string Spawn { get; } = string.Empty;
+
+        /// <summary>
+        /// The size of each item in the stack.
+        /// </summary>
+        [DataField("unitSize")]
+        public float UnitSize { get; } = 0.1f;
     }
 }
