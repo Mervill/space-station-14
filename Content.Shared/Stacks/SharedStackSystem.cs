@@ -138,10 +138,6 @@ namespace Content.Shared.Stacks
             if (!Resolve(uid, ref component))
                 return;
 
-            // Do nothing if amount is already the same.
-            if (amount == component.Count)
-                return;
-
             // Store old value for event-raising purposes...
             var old = component.Count;
 
@@ -163,7 +159,9 @@ namespace Content.Shared.Stacks
             Dirty(component);
 
             Appearance.SetData(uid, StackVisuals.Actual, component.Count);
-            RaiseLocalEvent(uid, new StackCountChangedEvent(old, component.Count), false);
+
+            if (old != amount)
+                RaiseLocalEvent(uid, new StackCountChangedEvent(old, component.Count), false);
         }
 
         /// <summary>

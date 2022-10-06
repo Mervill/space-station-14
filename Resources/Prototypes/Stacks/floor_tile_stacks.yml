@@ -2,248 +2,298 @@
   id: FloorTileSteel
   name: steel tile
   spawn: FloorTileItemSteel
-  
+  unitSize: 0.16
+
 - type: stack
   id: FloorTileMetalDiamond
   name: steel tile
   spawn: FloorTileItemMetalDiamond
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileWood
   name: wood floor
   spawn: FloorTileItemWood
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileWhite
   name: white tile
   spawn: FloorTileItemWhite
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileDark
   name: dark tile
   spawn: FloorTileItemDark
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileTechmaint
   name: techmaint floor
   spawn: FloorTileItemTechmaint
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileFreezer
   name: freezer tile
   spawn: FloorTileItemFreezer
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileShowroom
   name: showroom tile
   spawn: FloorTileItemShowroom
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileGCircuit
   name: green-circuit floor
   spawn: FloorTileItemGCircuit
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileGold
   name: gold floor
   spawn: FloorTileItemGold
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileReinforced
   name: reinforced tile
   spawn: FloorTileItemReinforced
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileMono
   name: mono tile
   spawn: FloorTileItemMono
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileLino
   name: linoleum floor
   spawn: FloorTileItemLino
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileHydro
   name: hydro tile
   spawn: FloorTileItemHydro
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileDirty
   name: dirty tile
   spawn: FloorTileItemDirty
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileStackShuttleWhite
   name: white shuttle tile
   spawn: FloorTileItemShuttleWhite
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileStackShuttleBlue
   name: blue shuttle tile
   spawn: FloorTileItemShuttleBlue
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileStackShuttleOrange
   name: orange shuttle tile
   spawn: FloorTileItemShuttleOrange
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileStackShuttlePurple
   name: purple shuttle tile
   spawn: FloorTileItemShuttlePurple
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileStackShuttleRed
   name: red shuttle tile
   spawn: FloorTileItemShuttleRed
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileStackEighties
   name: eighties floor tile
   spawn: FloorTileItemEighties
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileStackArcadeBlue
   name: blue arcade tile
   spawn: FloorTileItemArcadeBlue
-  
+  unitSize: 0.16
+
 - type: stack
   id: FloorTileStackArcadeBlue2
   name: blue arcade tile
   spawn: FloorTileItemArcadeBlue2
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileStackArcadeRed
   name: red arcade tile
   spawn: FloorTileItemArcadeRed
+  unitSize: 0.16
 
 - type: stack
   id: FloorCarpetRed
   name: red carpet tile
   spawn: FloorCarpetItemRed
+  unitSize: 0.16
 
 - type: stack
   id: FloorCarpetBlack
   name: block carpet tile
   spawn: FloorCarpetItemBlack
+  unitSize: 0.16
 
 - type: stack
   id: FloorCarpetBlue
   name: blue carpet tile
   spawn: FloorCarpetItemBlue
+  unitSize: 0.16
 
 - type: stack
   id: FloorCarpetGreen
   name: green carpet tile
   spawn: FloorCarpetItemGreen
+  unitSize: 0.16
 
 - type: stack
   id: FloorCarpetOrange
   name: orange carpet tile
   spawn: FloorCarpetItemOrange
+  unitSize: 0.16
 
 - type: stack
   id: FloorCarpetSkyBlue
   name: skyblue carpet tile
   spawn: FloorCarpetItemSkyBlue
+  unitSize: 0.16
 
 - type: stack
   id: FloorCarpetPurple
   name: purple carpet tile
   spawn: FloorCarpetItemPurple
+  unitSize: 0.16
 
 - type: stack
   id: FloorCarpetPink
   name: pink carpet tile
   spawn: FloorCarpetItemPink
-  
+  unitSize: 0.16
+
 - type: stack
   id: FloorTileStackCarpetClown
   name: clown carpet tile
   spawn: FloorTileItemCarpetClown
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileStackCarpetOffice
   name: office carpet tile
   spawn: FloorTileItemCarpetOffice
-  
+  unitSize: 0.16
+
 - type: stack
   id: FloorTileStackBoxing
   name: boxing ring tile
   spawn: FloorTileItemBoxing
-  
+  unitSize: 0.16
+
 - type: stack
   id: FloorTileStackGym
   name: gym floor tile
   spawn: FloorTileItemGym
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileElevatorShaft
   name: elevator shaft tile
   spawn: FloorTileItemElevatorShaft
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileRockVault
   name: rock vault tile
   spawn: FloorTileItemRockVault
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileBlue
   name: blue floor tile
   spawn: FloorTileItemBlue
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileBar
   name: item bar floor tile
   spawn: FloorTileItemBar
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileClown
   name: clown floor tile
   spawn: FloorTileItemClown
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileMime
   name: mime floor tile
   spawn: FloorTileItemMime
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileKitchen
   name: kitchen floor tile
   spawn: FloorTileItemKitchen
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileLaundry
   name: laundry floor tile
   spawn: FloorTileItemLaundry
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileSilver
   name: silver floor tile
   spawn: FloorTileItemSilver
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileGCircuit
   name: gcircuit floor tile
   spawn: FloorTileItemGCircuit
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileBCircuit
   name: bcircuit floor tile
   spawn: FloorTileItemBCircuit
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileGrass
   name: grass floor tile
   spawn: FloorTileItemGrass
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileGrassJungle
   name: grass jungle floor tile
   spawn: FloorTileItemGrassJungle
+  unitSize: 0.16
 
 - type: stack
   id: FloorTileSnow
   name: snow floor tile
   spawn: FloorTileItemSnow
+  unitSize: 0.16

@@ -36,7 +36,6 @@
   - type: Sprite
     state: coilhv-30
   - type: Item
-    size: 10
     heldPrefix: coilhv
   - type: CablePlacer
     cablePrototypeID: CableHV
@@ -56,8 +55,6 @@
   components:
   - type: Sprite
     state: coilhv-10
-  - type: Item
-    size: 3
   - type: Stack
     count: 1
 
@@ -72,7 +69,6 @@
   - type: Sprite
     state: coilmv-30
   - type: Item
-    size: 10
     heldPrefix: coilmv
   - type: CablePlacer
     cablePrototypeID: CableMV
@@ -92,8 +88,6 @@
   components:
   - type: Sprite
     state: coilmv-10
-  - type: Item
-    size: 3
   - type: Stack
     count: 1
 
@@ -107,7 +101,6 @@
   - type: Sprite
     state: coillv-30
   - type: Item
-    size: 10
     heldPrefix: coillv
   - type: CablePlacer
     cablePrototypeID: CableApcExtension
@@ -127,7 +120,5 @@
   components:
   - type: Sprite
     state: coillv-10
-  - type: Item
-    size: 3
   - type: Stack
     count: 1

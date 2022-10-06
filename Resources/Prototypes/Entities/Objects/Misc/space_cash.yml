@@ -54,6 +54,7 @@
   name: spacebuck
   icon: /Textures/Objects/Economy/cash.rsi/cash.png
   spawn: SpaceCash
+  unitSize: 0.001
 
 - type: entity
   parent: SpaceCash

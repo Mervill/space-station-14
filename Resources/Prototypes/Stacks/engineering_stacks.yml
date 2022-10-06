@@ -2,8 +2,10 @@
   id: InflatableWall
   name: inflatable wall
   spawn: InflatableWallStack1
+  unitSize: 0.5
 
 - type: stack
   id: InflatableDoor
   name: inflatable door
   spawn: InflatableDoorStack1
+  unitSize: 1.25
