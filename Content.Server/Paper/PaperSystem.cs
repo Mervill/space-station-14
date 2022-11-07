@@ -1,5 +1,7 @@
 using Content.Server.Administration.Logs;
+using Content.Server.Hands.Systems;
 using Content.Server.Popups;
+using Content.Server.Tools.Components;
 using Content.Server.UserInterface;
 using Content.Shared.Database;
 using Content.Shared.Examine;
@@ -7,6 +9,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Paper;
 using Content.Shared.Tag;
+using Content.Shared.Temperature;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using static Content.Shared.Paper.SharedPaperComponent;
@@ -16,6 +19,7 @@ namespace Content.Server.Paper
     public sealed class PaperSystem : EntitySystem
     {
         [Dependency] private readonly TagSystem _tagSystem = default!;
+        [Dependency] private readonly TransformSystem _transformSystem = default!;
         [Dependency] private readonly PopupSystem _popupSystem = default!;
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
         [Dependency] private readonly IAdminLogManager _adminLogger = default!;
@@ -97,6 +101,21 @@ namespace Content.Server.Paper
                     _popupSystem.PopupEntity(stampPaperOtherMessage, args.User, Filter.Pvs(args.User, entityManager: EntityManager).RemoveWhereAttachedEntity(puid => puid == args.User));
                 var stampPaperSelfMessage = Loc.GetString("paper-component-action-stamp-paper-self", ("target", Identity.Entity(args.Target, EntityManager)),("stamp", args.Used));
                     _popupSystem.PopupEntity(stampPaperSelfMessage, args.User, Filter.Entities(args.User));
+
+                return;
+            }
+
+            var isHotEvent = new IsHotEvent();
+            RaiseLocalEvent(args.Used, isHotEvent, false);
+            if (isHotEvent.IsHot)
+            {
+                var targetTransform = Transform(args.Target);
+
+                var ashEntity = Spawn("Ash", targetTransform.Coordinates);
+                var ashTransform = Transform(ashEntity);
+                _transformSystem.SetLocalRotation(ashEntity, targetTransform.LocalRotation);
+                ashTransform.AttachToGridOrMap();
+                QueueDel(uid);
             }
         }
 
