@@ -82,7 +82,7 @@ entities:
     parent: 52
     type: Transform
 - uid: 2
-  type: DrinkGoldschlagerBottleFull
+  type: DrinkGoldbeatersBottleFull
   components:
   - pos: 1.0845438,-2.1036394
     parent: 52
@@ -571,7 +571,7 @@ entities:
     parent: 52
     type: Transform
 - uid: 54
-  type: DrinkGoldschlagerBottleFull
+  type: DrinkGoldbeatersBottleFull
   components:
   - pos: 1.4439188,-1.6661394
     parent: 52

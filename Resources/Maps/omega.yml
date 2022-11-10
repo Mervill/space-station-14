@@ -31518,7 +31518,7 @@ entities:
     parent: 0
     type: Transform
 - uid: 2714
-  type: DrinkGoldschlagerBottleFull
+  type: DrinkGoldbeatersBottleFull
   components:
   - pos: -5.405396,24.535454
     parent: 0

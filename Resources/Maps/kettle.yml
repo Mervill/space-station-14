@@ -68102,7 +68102,7 @@ entities:
     parent: 82
     type: Transform
 - uid: 4360
-  type: DrinkGoldschlagerBottleFull
+  type: DrinkGoldbeatersBottleFull
   components:
   - pos: -13.670343,-6.8330545
     parent: 82
