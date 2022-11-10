@@ -676,7 +676,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: alcohol
   color: "#FFFF91"
-  spritePath: goldschlagerglass.rsi
+  spritePath: goldbeatersglass.rsi
   metabolisms:
     Drink:
       effects:

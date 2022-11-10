@@ -774,7 +774,7 @@
           Quantity: 50
   - type: Drink
   - type: Sprite
-    sprite: Objects/Consumable/Drinks/goldschlagerglass.rsi
+    sprite: Objects/Consumable/Drinks/goldbeatersglass.rsi
 
 - type: entity
   parent: DrinkGlassBase

@@ -125,7 +125,7 @@
   id: DrinkBottleGoldbeaters
   components:
   - type: Sprite
-    sprite: Objects/Consumable/TrashDrinks/goldschlagerbottle_empty.rsi
+    sprite: Objects/Consumable/TrashDrinks/goldbeatersbottle_empty.rsi
 
 
 - type: entity

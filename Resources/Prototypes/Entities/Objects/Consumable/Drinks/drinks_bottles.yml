@@ -163,7 +163,7 @@
         - ReagentId: Goldbeaters
           Quantity: 100
   - type: Sprite
-    sprite: Objects/Consumable/Drinks/goldschlagerbottle.rsi
+    sprite: Objects/Consumable/Drinks/goldbeatersbottle.rsi
 
 - type: entity
   parent: DrinkBottleBaseFull
