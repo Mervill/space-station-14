@@ -761,8 +761,8 @@
 
 - type: entity
   parent: DrinkGlassBase
-  id: DrinkGoldschlagerGlass
-  name: goldschlager glass
+  id: DrinkGoldbeatersGlass
+  name: goldbeater's hammer glass
   description: 100 proof that teen girls will drink anything with gold in it.
   components:
   - type: SolutionContainerManager
@@ -770,7 +770,7 @@
       drink:
         maxVol: 50
         reagents:
-        - ReagentId: Goldschlager
+        - ReagentId: Goldbeaters
           Quantity: 50
   - type: Drink
   - type: Sprite

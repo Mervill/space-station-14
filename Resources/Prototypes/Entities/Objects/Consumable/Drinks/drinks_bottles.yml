@@ -152,15 +152,15 @@
 
 - type: entity
   parent: DrinkBottleBaseFull
-  id: DrinkGoldschlagerBottleFull
-  name: goldschlager bottle
-  description: 100 proof cinnamon schnapps, made for alcoholic teen girls on spring break.
+  id: DrinkGoldbeatersBottleFull
+  name: goldbeater's hammer bottle
+  description: 100 proof cinnamon schnapps with gold flakes, made for alcoholic teen girls on spring break.
   components:
   - type: SolutionContainerManager
     solutions:
       drink:
         reagents:
-        - ReagentId: Goldschlager
+        - ReagentId: Goldbeaters
           Quantity: 100
   - type: Sprite
     sprite: Objects/Consumable/Drinks/goldschlagerbottle.rsi

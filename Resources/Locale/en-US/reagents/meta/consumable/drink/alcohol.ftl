@@ -133,8 +133,8 @@ reagent-desc-gin-fizz = Refreshingly lemony, deliciously dry.
 reagent-name-gin-tonic = gin and tonic
 reagent-desc-gin-tonic = An all time classic, mild cocktail.
 
-reagent-name-goldschlager = Goldschlager
-reagent-desc-goldschlager = 100 proof cinnamon schnapps, made for alcoholic teen girls on spring break.
+reagent-name-goldbeaters = Goldbeater's Hammer
+reagent-desc-goldbeaters = 100 proof cinnamon schnapps with gold flakes, made for alcoholic teen girls on spring break.
 
 reagent-name-grog = grog
 reagent-desc-grog = Watered-down rum, pirate approved!

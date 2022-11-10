@@ -225,14 +225,14 @@
     GinTonic: 3
 
 - type: reaction
-  id: Goldschlager
+  id: Goldbeaters
   reactants:
     Gold:
       amount: 1
     Vodka:
       amount: 10
   products:
-    Goldschlager: 10
+    Goldbeaters: 10
 
 - type: reaction
   id: Grog
