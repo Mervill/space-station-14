@@ -79,8 +79,7 @@ namespace Content.Server.Power.EntitySystems
 
         private void OnProviderConnected(Entity<ApcPowerReceiverComponent> receiver, ref ExtensionCableSystem.ProviderConnectedEvent args)
         {
-            var providerUid = args.Provider.Owner;
-            if (!_provQuery.TryGetComponent(providerUid, out var provider))
+            if (!_provQuery.TryGetComponent(args.Provider, out var provider))
                 return;
 
             receiver.Comp.Provider = provider;
@@ -99,7 +98,7 @@ namespace Content.Server.Power.EntitySystems
         {
             if (_recQuery.TryGetComponent(args.Receiver, out var receiver))
             {
-                provider.Comp.AddReceiver((args.Receiver.Owner, receiver));
+                provider.Comp.AddReceiver((args.Receiver, receiver));
             }
         }
 
@@ -107,7 +106,7 @@ namespace Content.Server.Power.EntitySystems
         {
             if (_recQuery.TryGetComponent(args.Receiver, out var receiver))
             {
-                provider.RemoveReceiver((args.Receiver.Owner, receiver));
+                provider.RemoveReceiver((args.Receiver, receiver));
             }
         }
 
