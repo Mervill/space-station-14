@@ -37,14 +37,14 @@ namespace Content.Server.Power.EntitySystems
             ResetReceivers(provider);
         }
 
-        private void OnProviderStarted(EntityUid uid, ExtensionCableProviderComponent provider, ComponentStartup args)
+        private void OnProviderStarted(Entity<ExtensionCableProviderComponent> provider, ref ComponentStartup args)
         {
-            Connect(uid, provider);
+            Connect(provider);
         }
 
-        private void OnProviderShutdown(EntityUid uid, ExtensionCableProviderComponent provider, ComponentShutdown args)
+        private void OnProviderShutdown(Entity<ExtensionCableProviderComponent> provider, ref ComponentShutdown args)
         {
-            var xform = Transform(uid);
+            var xform = Transform(provider);
 
             // If grid deleting no need to update power.
             if (HasComp<MapGridComponent>(xform.GridUid) &&
@@ -53,42 +53,42 @@ namespace Content.Server.Power.EntitySystems
                 return;
             }
 
-            Disconnect(uid, provider);
+            Disconnect(provider);
         }
 
-        private void OnProviderAnchorStateChanged(EntityUid uid, ExtensionCableProviderComponent provider, ref AnchorStateChangedEvent args)
+        private void OnProviderAnchorStateChanged(Entity<ExtensionCableProviderComponent> provider, ref AnchorStateChangedEvent args)
         {
             if (args.Anchored)
-                Connect(uid, provider);
+                Connect(provider);
             else
-                Disconnect(uid, provider);
+                Disconnect(provider);
         }
 
-        private void Connect(EntityUid uid, ExtensionCableProviderComponent provider)
+        private void Connect(Entity<ExtensionCableProviderComponent> provider)
         {
-            provider.Connectable = true;
+            provider.Comp.Connectable = true;
 
-            foreach (var receiver in FindAvailableReceivers(uid, provider.TransferRange))
+            foreach (var receiver in FindAvailableReceivers(provider.Owner, provider.Comp.TransferRange))
             {
                 receiver.Comp.Provider?.LinkedReceivers.Remove(receiver);
                 receiver.Comp.Provider = provider;
-                provider.LinkedReceivers.Add(receiver);
+                provider.Comp.LinkedReceivers.Add(receiver);
                 RaiseLocalEvent(receiver, new ProviderConnectedEvent((provider.Owner, provider)), broadcast: false);
-                RaiseLocalEvent(uid, new ReceiverConnectedEvent(receiver), broadcast: false);
+                RaiseLocalEvent(provider.Owner, new ReceiverConnectedEvent(receiver), broadcast: false);
             }
         }
 
-        private void Disconnect(EntityUid uid, ExtensionCableProviderComponent provider)
+        private void Disconnect(Entity<ExtensionCableProviderComponent> provider)
         {
             // same as OnProviderShutdown
-            provider.Connectable = false;
+            provider.Comp.Connectable = false;
             ResetReceivers(provider);
         }
 
-        private void OnProviderReAnchor(EntityUid uid, ExtensionCableProviderComponent component, ref ReAnchorEvent args)
+        private void OnProviderReAnchor(Entity<ExtensionCableProviderComponent> entity, ref ReAnchorEvent args)
         {
-            Disconnect(uid, component);
-            Connect(uid, component);
+            Disconnect(entity);
+            Connect(entity);
         }
 
         private void ResetReceivers(ExtensionCableProviderComponent provider)
