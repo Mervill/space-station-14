@@ -34,7 +34,7 @@ namespace Content.Server.Power.EntitySystems
                 return;
 
             provider.TransferRange = range;
-            ResetReceivers(provider);
+            ResetReceivers((uid, provider));
         }
 
         private void OnProviderStarted(Entity<ExtensionCableProviderComponent> provider, ref ComponentStartup args)
@@ -70,7 +70,7 @@ namespace Content.Server.Power.EntitySystems
 
             foreach (var receiver in FindAvailableReceivers(provider.Owner, provider.Comp.TransferRange))
             {
-                receiver.Comp.Provider?.LinkedReceivers.Remove(receiver);
+                receiver.Comp.Provider?.Comp.LinkedReceivers.Remove(receiver);
                 receiver.Comp.Provider = provider;
                 provider.Comp.LinkedReceivers.Add(receiver);
                 RaiseLocalEvent(receiver, new ProviderConnectedEvent((provider.Owner, provider)), broadcast: false);
@@ -91,18 +91,17 @@ namespace Content.Server.Power.EntitySystems
             Connect(entity);
         }
 
-        private void ResetReceivers(ExtensionCableProviderComponent provider)
+        private void ResetReceivers(Entity<ExtensionCableProviderComponent> provider)
         {
-            var providerId = provider.Owner;
-            var receivers = provider.LinkedReceivers.ToArray();
-            provider.LinkedReceivers.Clear();
+            var receivers = provider.Comp.LinkedReceivers.ToArray();
+            provider.Comp.LinkedReceivers.Clear();
 
             foreach (var receiver in receivers)
             {
                 var receiverId = receiver.Owner;
                 receiver.Provider = null;
                 RaiseLocalEvent(receiverId, new ProviderDisconnectedEvent(provider), broadcast: false);
-                RaiseLocalEvent(providerId, new ReceiverDisconnectedEvent((receiverId, receiver)), broadcast: false);
+                RaiseLocalEvent(provider, new ReceiverDisconnectedEvent((receiverId, receiver)), broadcast: false);
             }
 
             foreach (var receiver in receivers)
@@ -162,8 +161,8 @@ namespace Content.Server.Power.EntitySystems
 
             if (provider != null)
             {
-                RaiseLocalEvent(provider.Owner, new ReceiverDisconnectedEvent((uid, receiver)), broadcast: false);
-                provider.LinkedReceivers.Remove(receiver);
+                RaiseLocalEvent(provider.Value.Owner, new ReceiverDisconnectedEvent((uid, receiver)), broadcast: false);
+                provider.Value.Comp.LinkedReceivers.Remove(receiver);
             }
 
             receiver.ReceptionRange = range;
@@ -183,12 +182,12 @@ namespace Content.Server.Power.EntitySystems
             }
         }
 
-        private void OnReceiverShutdown(EntityUid uid, ExtensionCableReceiverComponent receiver, ComponentShutdown args)
+        private void OnReceiverShutdown(Entity<ExtensionCableReceiverComponent> receiver, ComponentShutdown args)
         {
             Disconnect(uid, receiver);
         }
 
-        private void OnReceiverAnchorStateChanged(EntityUid uid, ExtensionCableReceiverComponent receiver, ref AnchorStateChangedEvent args)
+        private void OnReceiverAnchorStateChanged(Entity<ExtensionCableReceiverComponent> receiver, ref AnchorStateChangedEvent args)
         {
             if (args.Anchored)
             {
@@ -200,7 +199,7 @@ namespace Content.Server.Power.EntitySystems
             }
         }
 
-        private void OnReceiverReAnchor(EntityUid uid, ExtensionCableReceiverComponent receiver, ref ReAnchorEvent args)
+        private void OnReceiverReAnchor(Entity<ExtensionCableReceiverComponent> receiver, ref ReAnchorEvent args)
         {
             Disconnect(uid, receiver);
             Connect(uid, receiver);
@@ -221,8 +220,8 @@ namespace Content.Server.Power.EntitySystems
             RaiseLocalEvent(uid, new ProviderDisconnectedEvent(receiver.Provider), broadcast: false);
             if (receiver.Provider != null)
             {
-                RaiseLocalEvent(receiver.Provider.Owner, new ReceiverDisconnectedEvent((uid, receiver)), broadcast: false);
-                receiver.Provider.LinkedReceivers.Remove(receiver);
+                RaiseLocalEvent(receiver.Provider.Value.Owner, new ReceiverDisconnectedEvent((uid, receiver)), broadcast: false);
+                receiver.Provider.Value.LinkedReceivers.Remove(receiver);
             }
 
             receiver.Provider = null;
