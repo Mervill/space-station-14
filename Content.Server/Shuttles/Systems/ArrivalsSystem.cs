@@ -24,6 +24,7 @@ using Content.Shared.Parallax.Biomes;
 using Content.Shared.Salvage;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Tiles;
+using Content.Shared.Whitelist;
 using Robust.Server.GameObjects;
 using Robust.Shared.Collections;
 using Robust.Shared.Configuration;
@@ -58,6 +59,7 @@ public sealed class ArrivalsSystem : EntitySystem
     [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly ActorSystem _actor = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
 
     private EntityQuery<PendingClockInComponent> _pendingQuery;
     private EntityQuery<ArrivalsBlacklistComponent> _blacklistQuery;
@@ -246,7 +248,14 @@ public sealed class ArrivalsSystem : EntitySystem
 
         // Any mob then yeet them off the shuttle.
         if (!_cfgManager.GetCVar(CCVars.ArrivalsReturns) && args.FromMapUid != null)
-            DumpChildren(shuttleUid, ref args);
+        {
+            EntityWhitelist? shuttleBlacklist = null;
+            if (TryComp<StationArrivalsComponent>(component.Station, out var stationArrivals))
+            {
+                shuttleBlacklist = stationArrivals.ShuttleBlacklist;
+            }
+            DumpChildren(shuttleUid, shuttleBlacklist, ref args);
+        }
 
         var pendingQuery = AllEntityQuery<PendingClockInComponent, TransformComponent>();
 
@@ -294,10 +303,10 @@ public sealed class ArrivalsSystem : EntitySystem
         }
     }
 
-    private void DumpChildren(EntityUid uid, ref FTLStartedEvent args)
+    private void DumpChildren(EntityUid uid, EntityWhitelist? shuttleBlacklist, ref FTLStartedEvent args)
     {
         var toDump = new List<Entity<TransformComponent>>();
-        FindDumpChildren(uid, toDump);
+        FindDumpChildren(uid, shuttleBlacklist, toDump);
         foreach (var (ent, xform) in toDump)
         {
             var rotation = xform.LocalRotation;
@@ -310,14 +319,16 @@ public sealed class ArrivalsSystem : EntitySystem
         }
     }
 
-    private void FindDumpChildren(EntityUid uid, List<Entity<TransformComponent>> toDump)
+    private void FindDumpChildren(EntityUid uid, EntityWhitelist? shuttleBlacklist, List<Entity<TransformComponent>> toDump)
     {
         if (_pendingQuery.HasComponent(uid))
             return;
 
         var xform = Transform(uid);
 
-        if (_mobQuery.HasComponent(uid) || _blacklistQuery.HasComponent(uid))
+        if (_mobQuery.HasComponent(uid) ||
+            _blacklistQuery.HasComponent(uid) ||
+            _whitelist.IsBlacklistPass(shuttleBlacklist, uid))
         {
             toDump.Add((uid, xform));
             return;
@@ -326,7 +337,7 @@ public sealed class ArrivalsSystem : EntitySystem
         var children = xform.ChildEnumerator;
         while (children.MoveNext(out var child))
         {
-            FindDumpChildren(child, toDump);
+            FindDumpChildren(child, shuttleBlacklist, toDump);
         }
     }
 

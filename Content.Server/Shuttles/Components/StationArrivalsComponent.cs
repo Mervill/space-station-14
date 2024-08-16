@@ -1,4 +1,5 @@
 using Content.Server.Shuttles.Systems;
+using Content.Shared.Whitelist;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Shuttles.Components;
@@ -13,4 +14,7 @@ public sealed partial class StationArrivalsComponent : Component
     public EntityUid Shuttle;
 
     [DataField("shuttlePath")] public ResPath ShuttlePath = new("/Maps/Shuttles/arrivals.yml");
+
+    [DataField("shuttleBlacklist")]
+    public EntityWhitelist? ShuttleBlacklist;
 }
