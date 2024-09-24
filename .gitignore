@@ -306,3 +306,6 @@ Resources/MapImages
 
 # Direnv stuff
 .direnv/
+
+# ignore compiler-generated xml docs
+Resources/ViewVariables/

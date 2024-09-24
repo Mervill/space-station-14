@@ -12,6 +12,8 @@
     <WarningsAsErrors>nullable</WarningsAsErrors>
     <Nullable>enable</Nullable>
     <ServerGarbageCollection>true</ServerGarbageCollection>
+    <ViewVariables>true</ViewVariables>
+    <VVRobustProjectDir>RobustToolbox</VVRobustProjectDir>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />
