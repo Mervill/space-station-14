@@ -1,0 +1,95 @@
+diff --git a/.gitignore b/.gitignore
+index 2dd5912047..34803138a0 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -306,3 +306,6 @@ Resources/MapImages
+ 
+ # Direnv stuff
+ .direnv/
++
++# ignore compiler-generated xml docs
++Resources/ViewVariables/
+\ No newline at end of file
+diff --git a/Content.Client/Content.Client.csproj b/Content.Client/Content.Client.csproj
+index 43fd8df2e1..af13f2997f 100644
+--- a/Content.Client/Content.Client.csproj
++++ b/Content.Client/Content.Client.csproj
+@@ -11,6 +11,8 @@
+     <Nullable>enable</Nullable>
+     <Configurations>Debug;Release;Tools;DebugOpt</Configurations>
+     <Platforms>AnyCPU</Platforms>
++    <ViewVariables>true</ViewVariables>
++    <VVRobustProjectDir>RobustToolbox</VVRobustProjectDir>
+   </PropertyGroup>
+   <ItemGroup>
+     <PackageReference Include="Nett" />
+diff --git a/Content.Server/Content.Server.csproj b/Content.Server/Content.Server.csproj
+index 99b834683c..792f109e0d 100644
+--- a/Content.Server/Content.Server.csproj
++++ b/Content.Server/Content.Server.csproj
+@@ -12,6 +12,8 @@
+     <WarningsAsErrors>nullable</WarningsAsErrors>
+     <Nullable>enable</Nullable>
+     <ServerGarbageCollection>true</ServerGarbageCollection>
++    <ViewVariables>true</ViewVariables>
++    <VVRobustProjectDir>RobustToolbox</VVRobustProjectDir>
+   </PropertyGroup>
+   <ItemGroup>
+     <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />
+diff --git a/Content.Shared/Content.Shared.csproj b/Content.Shared/Content.Shared.csproj
+index 4cca399b28..38fb496570 100644
+--- a/Content.Shared/Content.Shared.csproj
++++ b/Content.Shared/Content.Shared.csproj
+@@ -7,6 +7,8 @@
+     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+     <WarningsAsErrors>nullable</WarningsAsErrors>
+     <Nullable>enable</Nullable>
++    <ViewVariables>true</ViewVariables>
++    <VVRobustProjectDir>RobustToolbox</VVRobustProjectDir>
+   </PropertyGroup>
+   <ItemGroup>
+     <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />
+diff --git a/SpaceStation14.sln b/SpaceStation14.sln
+index 0e00fe5b12..915c5717a6 100644
+--- a/SpaceStation14.sln
++++ b/SpaceStation14.sln
+@@ -56,6 +56,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSBuild", "MSBuild", "{5040
+ 		RobustToolbox\MSBuild\Robust.Platform.props = RobustToolbox\MSBuild\Robust.Platform.props
+ 		RobustToolbox\MSBuild\Robust.Properties.targets = RobustToolbox\MSBuild\Robust.Properties.targets
+ 		RobustToolbox\MSBuild\Robust.Trimming.targets = RobustToolbox\MSBuild\Robust.Trimming.targets
++		RobustToolbox\MSBuild\Robust.ViewVariables.targets = RobustToolbox\MSBuild\Robust.ViewVariables.targets
+ 		RobustToolbox\MSBuild\XamlIL.targets = RobustToolbox\MSBuild\XamlIL.targets
+ 	EndProjectSection
+ EndProject
+@@ -135,6 +136,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Roslyn", "Roslyn", "{7844DA
+ EndProject
+ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robust.Xaml", "RobustToolbox\Robust.Xaml\Robust.Xaml.csproj", "{5C05B9B4-6AFE-4884-AA6A-5A26C0FFF2F6}"
+ EndProject
++Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Robust.XmlDocTool", "RobustToolbox\Robust.XmlDocTool\Robust.XmlDocTool.csproj", "{8DBE58E7-E972-4C3B-AFD8-D4D48BFDB410}"
++EndProject
+ Global
+ 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+ 		Debug|Any CPU = Debug|Any CPU
+@@ -454,6 +457,14 @@ Global
+ 		{5C05B9B4-6AFE-4884-AA6A-5A26C0FFF2F6}.Release|Any CPU.Build.0 = Release|Any CPU
+ 		{5C05B9B4-6AFE-4884-AA6A-5A26C0FFF2F6}.Tools|Any CPU.ActiveCfg = Debug|Any CPU
+ 		{5C05B9B4-6AFE-4884-AA6A-5A26C0FFF2F6}.Tools|Any CPU.Build.0 = Debug|Any CPU
++		{8DBE58E7-E972-4C3B-AFD8-D4D48BFDB410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
++		{8DBE58E7-E972-4C3B-AFD8-D4D48BFDB410}.Debug|Any CPU.Build.0 = Debug|Any CPU
++		{8DBE58E7-E972-4C3B-AFD8-D4D48BFDB410}.DebugOpt|Any CPU.ActiveCfg = Debug|Any CPU
++		{8DBE58E7-E972-4C3B-AFD8-D4D48BFDB410}.DebugOpt|Any CPU.Build.0 = Debug|Any CPU
++		{8DBE58E7-E972-4C3B-AFD8-D4D48BFDB410}.Release|Any CPU.ActiveCfg = Release|Any CPU
++		{8DBE58E7-E972-4C3B-AFD8-D4D48BFDB410}.Release|Any CPU.Build.0 = Release|Any CPU
++		{8DBE58E7-E972-4C3B-AFD8-D4D48BFDB410}.Tools|Any CPU.ActiveCfg = Debug|Any CPU
++		{8DBE58E7-E972-4C3B-AFD8-D4D48BFDB410}.Tools|Any CPU.Build.0 = Debug|Any CPU
+ 	EndGlobalSection
+ 	GlobalSection(SolutionProperties) = preSolution
+ 		HideSolutionNode = FALSE
+@@ -487,6 +498,7 @@ Global
+ 		{88B0FC0F-7209-40E2-AF16-EB90AF727C5B} = {7844DA69-B0F0-49FB-A05E-ECA37372277A}
+ 		{83F510FE-9B50-4D96-AFAB-CC13998D6AFE} = {7844DA69-B0F0-49FB-A05E-ECA37372277A}
+ 		{5C05B9B4-6AFE-4884-AA6A-5A26C0FFF2F6} = {83B4CBBA-547A-42F0-A7CD-8A67D93196CE}
++		{8DBE58E7-E972-4C3B-AFD8-D4D48BFDB410} = {83B4CBBA-547A-42F0-A7CD-8A67D93196CE}
+ 	EndGlobalSection
+ 	GlobalSection(ExtensibilityGlobals) = postSolution
+ 		SolutionGuid = {AA37ED9F-F8D6-468E-A101-658AD605B09A}

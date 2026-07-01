@@ -1,0 +1,17 @@
+name: Check for modified csproj
+
+on:
+  pull_request_target:
+    paths:
+      - '**.csproj'
+
+jobs:
+  Label:
+    if: ( github.event.pull_request.draft == false ) && ( github.actor != 'PJBot' )
+    runs-on: ubuntu-latest
+    steps:
+      - name: Warn if modifing csproj files
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.number }}
+          body: ":warning: This pull request modifies `.csproj` files. Please make sure you meant to do this!"

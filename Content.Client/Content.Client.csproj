@@ -11,6 +11,8 @@
     <Nullable>enable</Nullable>
     <Configurations>Debug;Release;Tools;DebugOpt</Configurations>
     <Platforms>AnyCPU</Platforms>
+    <ViewVariables>true</ViewVariables>
+    <VVRobustProjectDir>RobustToolbox</VVRobustProjectDir>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Nett" />

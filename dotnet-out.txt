@@ -1,0 +1,37 @@
+/mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/BuildChecker/BuildChecker.csproj : warning NU1503: Skipping restore for project '/mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/BuildChecker/BuildChecker.csproj'. The project file may be invalid or missing targets required for restore. [/mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/SpaceStation14.sln]
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  No hooks change detected.
+  $ git submodule update --init --recursive
+  OpenToolkit.GraphicsLibraryFramework -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/OpenToolkit.GraphicsLibraryFramework/bin/Tools/net8.0/OpenToolkit.GraphicsLibraryFramework.dll
+  Lidgren.Network -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Lidgren.Network/bin/Tools/net8.0/SpaceWizards.Lidgren.Network.dll
+  Robust.Analyzers -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Robust.Analyzers/bin/Release/netstandard2.0/Robust.Analyzers.dll
+  Robust.Serialization.Generator -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Robust.Serialization.Generator/bin/Debug/netstandard2.0/Robust.Serialization.Generator.dll
+  NetSerializer -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/NetSerializer/NetSerializer/bin/Release/net6.0/Robust.NetSerializer.dll
+  XamlX.Runtime -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/XamlX/src/XamlX.Runtime/bin/Release/netstandard2.0/XamlX.Runtime.dll
+  XamlX -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/XamlX/src/XamlX/bin/Release/netstandard2.0/XamlX.dll
+  Robust.Shared.Maths -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Robust.Shared.Maths/bin/Tools/Robust.Shared.Maths.dll
+  Robust.Client.NameGenerator -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Robust.Client.NameGenerator/bin/Release/netstandard2.0/Robust.Client.NameGenerator.dll
+  Content.PatreonParser -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/Content.PatreonParser/bin/Debug/net7.0/Content.PatreonParser.dll
+  Robust.XmlDocTool -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/bin/XmlDocTool/Robust.XmlDocTool.dll
+  Robust.Shared.CompNetworkGenerator -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Robust.Shared.CompNetworkGenerator/bin/Tools/netstandard2.0/Robust.Shared.CompNetworkGenerator.dll
+  Robust.Analyzers.Tests -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Robust.Analyzers.Tests/bin/Tools/net8.0/Robust.Analyzers.Tests.dll
+  Content.Shared.Database -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/Content.Shared.Database/bin/Tools/net8.0/Content.Shared.Database.dll
+  XamlX.IL.Cecil -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/XamlX/src/XamlX.IL.Cecil/bin/Release/netstandard2.0/XamlX.IL.Cecil.dll
+  Robust.Xaml -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Robust.Xaml/bin/Debug/netstandard2.0/Robust.Xaml.dll
+  Robust.Client.Injectors -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Robust.Client.Injectors/bin/Release/netstandard2.0/Robust.Client.Injectors.dll
+  Content.Server.Database -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/bin/Content.Server.Database/Content.Server.Database.dll
+  Robust.LoaderApi -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Robust.LoaderApi/Robust.LoaderApi/bin/Release/net8.0/Robust.LoaderApi.dll
+  Avalonia.Base -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Avalonia.Base/bin/Release/net8.0/Avalonia.Base.dll
+  Robust.Shared -> /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Robust.Shared/bin/Tools/Robust.Shared.dll
+  /usr/bin/sh: 2: /tmp/MSBuildTempmervill/tmpd0122b481e35470ba2291b94f1710110.exec.cmd: /mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/bin/XmlDocTool/Robust.XmlDocTool.exe: not found
+/mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/MSBuild/Robust.ViewVariables.targets(60,5): error MSB3073: The command "/mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/bin/XmlDocTool/Robust.XmlDocTool.exe ../Resources/ViewVariables/Robust.Shared.xml" exited with code 127. [/mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Robust.Shared/Robust.Shared.csproj]
+
+Build FAILED.
+
+/mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/BuildChecker/BuildChecker.csproj : warning NU1503: Skipping restore for project '/mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/BuildChecker/BuildChecker.csproj'. The project file may be invalid or missing targets required for restore. [/mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/SpaceStation14.sln]
+/mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/MSBuild/Robust.ViewVariables.targets(60,5): error MSB3073: The command "/mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/bin/XmlDocTool/Robust.XmlDocTool.exe ../Resources/ViewVariables/Robust.Shared.xml" exited with code 127. [/mnt/f/Users/Mervill/Desktop/C#/space-wizards/space-station-14/RobustToolbox/Robust.Shared/Robust.Shared.csproj]
+    1 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:34.56

@@ -1,0 +1,24 @@
+// Place in the SS14 Resources folder
+// <space-station-14>/Resources/Resources.code-workspace
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/CVS": true,
+            "**/.DS_Store": true,
+            "**/Thumbs.db": true,
+
+            "Maps": true,       // big raw map files clog up search
+            "MapImages": true,
+            "Changelog": true,  // no reason to search this
+            "Credits": true,    // no reason to search this
+        }
+    }
+}

@@ -1,0 +1,78 @@
+
+- type: entity
+  id: Neutron
+  name: "Neutron"
+  components:
+  - type: Transform
+    anchored: false
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: true
+    linearDamping: 0
+    angularDamping: 0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.1
+        density: 60
+        mask:
+        - Impassable
+        layer:
+        - Impassable
+        restitution: 1
+        friction: 0
+  - type: MovementIgnoreGravity
+    gravityState: true
+  - type: Sprite
+    sprite: Objects/shapes.rsi
+    state: beveled_circle
+    scale: 0.2,0.2
+    noRot: true
+  - type: NuclearNeutron
+
+- type: entity
+  id: NeutronSpontaneous
+  name: "Neutron"
+  suffix: Spontaneous
+  parent: Neutron
+  components:
+  - type: NuclearNeutron
+    spontaneousMotion: true
+    spontaneousMagnitude: 5
+
+
+- type: entity
+  id: NuclearElementUranium
+  name: "Uranium 253"
+  components:
+  - type: Transform
+    anchored: false
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: true
+    linearDamping: 0
+    angularDamping: 0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 60
+        mask:
+        - Impassable
+        layer:
+        - Impassable
+        restitution: 1
+        friction: 0
+  - type: MovementIgnoreGravity
+    gravityState: true
+  - type: Sprite
+    sprite: Objects/shapes.rsi
+    color: "#228EFE"
+    state: beveled_circle
+    scale: 0.4,0.4
+    noRot: true
+  - type: NuclearFissile

@@ -1,0 +1,55 @@
+diff --git a/Content.Shared/Silicons/StationAi/StationAiVisionSystem.cs b/Content.Shared/Silicons/StationAi/StationAiVisionSystem.cs
+index bdc62a6bb3..94eb98e378 100644
+--- a/Content.Shared/Silicons/StationAi/StationAiVisionSystem.cs
++++ b/Content.Shared/Silicons/StationAi/StationAiVisionSystem.cs
+@@ -1,3 +1,5 @@
++using Content.Shared.Power.Components;
++using Content.Shared.Power.EntitySystems;
+ using Content.Shared.StationAi;
+ using Robust.Shared.Map.Components;
+ using Robust.Shared.Physics;
+@@ -18,6 +20,7 @@ public sealed class StationAiVisionSystem : EntitySystem
+     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+     [Dependency] private readonly SharedMapSystem _maps = default!;
+     [Dependency] private readonly SharedTransformSystem _xforms = default!;
++    [Dependency] private readonly SharedPowerReceiverSystem _powerReceiver = default!;
+ 
+     private SeedJob _seedJob;
+     private ViewJob _job;
+@@ -79,7 +82,7 @@ public bool IsAccessible(Entity<BroadphaseComponent, MapGridComponent> grid, Vec
+ 
+         foreach (var seed in _seeds)
+         {
+-            if (!seed.Comp.Enabled)
++            if (!IsValidVisionEntity(seed))
+                 continue;
+ 
+             _job.Data.Add(seed);
+@@ -138,6 +141,18 @@ private bool IsOccluded(Entity<BroadphaseComponent, MapGridComponent> grid, Vect
+         return anyOccluders;
+     }
+ 
++    private bool IsValidVisionEntity(Entity<StationAiVisionComponent> ent)
++    {
++        if (!ent.Comp.Enabled)
++            return false;
++
++        // shared power code is cursed, just fyi
++        if (!_powerReceiver.IsPowered(ent.Owner))
++            return false;
++
++        return true;
++    }
++
+     /// <summary>
+     /// Gets a byond-equivalent for tiles in the specified worldAABB.
+     /// </summary>
+@@ -160,7 +175,7 @@ public void GetView(Entity<BroadphaseComponent, MapGridComponent> grid, Box2Rota
+ 
+         foreach (var seed in _seeds)
+         {
+-            if (!seed.Comp.Enabled)
++            if (!IsValidVisionEntity(seed))
+                 continue;
+ 
+             _job.Data.Add(seed);

@@ -1,0 +1,21 @@
+{
+    "version": 1,
+    "size": {
+      "x": 32,
+      "y": 32
+    },
+    "states": [
+      {
+        "name": "beveled_circle"
+      },
+      {
+        "name": "beveled_hexagon"
+      },
+      {
+        "name": "beveled_square"
+      },
+      {
+        "name": "beveled_triangle"
+      }
+    ]
+  }

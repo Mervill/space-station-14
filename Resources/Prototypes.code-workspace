@@ -1,0 +1,19 @@
+// Place in the SS14 Resources folder
+// <space-station-14>/Resources/Prototypes.code-workspace
+{
+    "folders": [
+        {
+            "path": "./Prototypes"
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/CVS": true,
+            "**/.DS_Store": true,
+            "**/Thumbs.db": true,
+        }
+    }
+}
